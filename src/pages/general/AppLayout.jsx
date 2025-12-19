@@ -12,7 +12,7 @@ import DropDownComponent from "../../animation-ui/DropDownComponent";
 function AppLayout() {
   return (
     <div className="layout-container  flex flex-col md:flex-row min-h-screen">
-      <Jump classStyles="z-39">
+      <Jump classStyles="z-37">
         <Counter />
       </Jump>
       <SideBar />

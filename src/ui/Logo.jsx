@@ -1,6 +1,7 @@
 import DropDownComponent from "../animation-ui/DropDownComponent";
 import HeartBeat from "../animation-ui/HeartBeat";
 
+
 function Logo({ dark, isMobile }) {
   return (
     <>
@@ -10,8 +11,8 @@ function Logo({ dark, isMobile }) {
             <img
               src={
                 dark
-                  ? "../../public/darkmodelogo.png"
-                  : "../../public/lightmodelogo.png"
+                  ? "/darkmodelogo.png"
+                  : "/lightmodelogo.png"
               }
               alt="logo"
               className="w-3/12 h-auto md:p-3 pb-0 md:w-1/2"

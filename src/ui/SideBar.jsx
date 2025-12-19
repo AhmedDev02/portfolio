@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiCloseLine } from "react-icons/ri";
 import styled from "styled-components";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const Menu = styled.button`
   position: absolute;
@@ -38,7 +39,9 @@ export const MenuDiv = styled.div`
   transition: transform 300ms ease-in-out;
 `;
 function SideBar() {
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  const { theme } = useThemeContext();
+  const { toggleDarkMode } = useTheme();
+  const isDarkMode = theme === "dark";
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
   useEffect(() => {

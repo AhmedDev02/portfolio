@@ -1,0 +1,48 @@
+.project-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-cell:hover {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -30px;
+}
+
+.project-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background-image: url("../../../public/lightmodelogo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0; /* start hidden */
+  transition: opacity 0.3s ease;
+}
+
+.project-cell:hover::before {
+  opacity: 1; /* fade logo in above image */
+}
+
+.project-cell:active {
+  cursor: grabbing;
+}
+#image-overlay::hover {
+  z-index: 10;
+  opacity: 1;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: inherit;
+}
+
+.text-writer-for-cell {
+  position: absolute !important;
+  top: 2.5rem;
+  left: -4.5rem;
+  padding: 2.5rem;
+  width: 100%;
+  text-align: center;
+  color: #022c22;
+  background-color: #fffbeb;
+  transform: rotate(-90deg);
+}

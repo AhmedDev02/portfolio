@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+:root {
+  --dark-mode-bg: #111827; /* global scope */
+}
+html,
+body,
+.layout-container {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: system-ui, sans-serif;
+  box-sizing: border-box;
+  line-height: 1.5;
+  min-height: 100vh;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  font-family: "Delius Unicase", cursive;
+}
+
+/* --- LIGHT MODE DEFAULTS (Applied by default) --- */
+html,
+body,
+.layout-container {
+  background-color: #f9fafb; //Tailwind bg-gray-50
+  color: #1f2937; /* Tailwind text-gray-800 */
+}
+
+/* --- DARK MODE OVERRIDE (Applied when 'dark' class is present on <html>) --- */
+.dark html,
+.dark body,
+.dark .layout-container {
+  background-color: #111827; // Tailwind dark:bg-gray-900
+  color: #e5e7eb; /* Tailwind dark:text-gray-200 */
+}
+
+/* Other non-theme related global styles */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo-container {
+  filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.361));
+  /* box-shadow: rgba(255, 255, 255, 0.4) 0px 4px 10px -2px,
+    rgba(255, 255, 255, 0.15) 0px 0px 10px 1px; */
+}
+.dark .logo-container {
+  filter: drop-shadow(2px -1px 10px rgba(255, 255, 255, 0.361));
+}
+.dark .side-bar {
+  background-color: #050f1d;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px;
+}
+
+.side-bar {
+  background-color: #fcfcfc;
+
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px;
+}
+
+.dark .activeNav {
+  background-color: #f9fafb; /* Tailwind indigo-200 */
+  color: #111827;
+  box-shadow: rgba(255, 255, 255, 0.4) 0px 4px 10px -2px,
+    rgba(255, 255, 255, 0.15) 0px 0px 10px 1px;
+}
+.activeNav {
+  background-color: #111827; /* Tailwind indigo-200 */
+  color: #f9fafb;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.dark .inActiveNav {
+  color: #ffffff89;
+}
+
+.inActiveNav {
+  color: #535353da;
+}
+.svg-nav {
+  height: 2rem;
+  font-size: x-large;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+.dark p,
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f9fafb;
+}
+.copyright-text {
+  text-align: center;
+  font-size: 0.675rem;
+  color: #6b7280; /* Tailwind text-gray-500 */
+}
+
+#tsparticles canvas {
+  width: 80% !important;
+  height: 80% !important;
+  left: 20% !important;
+}
+.Typewriter__cursor {
+  display: none !important;
+}
+
+.dark .my-blended-gif {
+  /* This is the key property */
+  mix-blend-mode: screen;
+  /* You may also need this to ensure proper blending */
+  isolation: isolate;
+  width: 80%;
+  height: auto;
+  /* display: none; */
+}
+.my-blended-gif {
+  background-color: #f9fafb;
+  width: 100%;
+  height: auto;
+}
+
+/* Hide scrollbar track + style only the bar (thumb) */
+.chat-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #10b981; /* emerald-500 */
+  border-radius: 20px;
+}
+
+.chat-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 transparent; /* Firefox */
+}
+
+.close-chat {
+  cursor: pointer;
+}
+
+#map-guide {
+  color: #050f1d;
+}
+.dark #map-guide {
+  color: white;
+}
+
+.dark .Typewriter__wrapper {
+  color: #f9fafb;
+  text-align: center;
+  display: block;
+  height: 20px;
+  font-weight: 700;
+  /* position: fixed; */
+}
+.Typewriter__wrapper {
+  color: #111827;
+  text-align: center;
+  display: block;
+  height: 20px;
+  font-weight: 700;
+}
+
+@media (min-width: 640px) {
+  h1 .Typewriter .Typewriter__wrapper {
+    /* color: red; */
+  }
+}
+
+span.Typewriter__wrapper {
+  display: inline-block;
+  text-align: left;
+  margin-right: auto !important;
+}
+
+.dark span.Typewriter__wrapper {
+  display: inline-block;
+  text-align: left;
+  margin-right: auto !important;
+}
+
+aside div.Typewriter {
+  text-align: center;
+  height: 20px;
+}
+
+aside div.Typewriter__wrapper {
+  font-size: 30px;
+}
+
+@media (min-width: 640px) {
+  aside div.Typewriter__wrapper {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  aside div.Typewriter__wrapper {
+    font-size: 60px;
+  }
+}
+.skills-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: skills-marquee 10s linear infinite;
+  will-change: transform;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+@keyframes skills-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.skills-track:hover {
+  animation-play-state: paused;
+}

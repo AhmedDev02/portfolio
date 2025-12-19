@@ -1,0 +1,72 @@
+.gallery-container {
+  margin: 4% auto;
+  width: 210px;
+  height: 100px;
+  position: relative;
+  perspective: 1000px;
+}
+
+/* Rotating wrapper */
+#gallery-carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: gallery-rotation 30s infinite linear;
+}
+/* 
+#gallery-carousel:hover {
+  animation-play-state: paused;
+} */
+
+/* Each image frame */
+#gallery-carousel figure {
+  display: block;
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  left: 30px;
+  top: -80px;
+  /* background: black; */
+  overflow: hidden;
+  /* border: solid 5px black; */
+}
+
+/* Image styling */
+#gallery-carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* filter: grayscale(1); */
+  /* cursor: pointer; */
+  transition: all 0.5s ease;
+}
+
+/* #gallery-carousel img:hover {
+  filter: grayscale(0);
+  transform: scale(1.2);
+} */
+
+/* Rotation animation */
+@keyframes gallery-rotation {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(1000deg);
+  }
+}
+
+.gallery-container {
+  /* margin: 4% auto; */
+  width: 210px;
+  height: 210px; /* MATCH WIDTH → PERFECT CIRCLE */
+  position: absolute;
+  perspective: 1000px;
+}
+#gallery-carousel figure {
+  top: 45%;
+  left: 20%;
+  transform-origin: center;
+  transform: translate(-50%, -50%);
+}

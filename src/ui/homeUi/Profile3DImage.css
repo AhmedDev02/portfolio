@@ -1,0 +1,32 @@
+.profile3d-wrapper {
+  width: 260px;
+  height: 340px;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+}
+
+.profile3d-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  position: relative;
+  z-index: 2;
+  box-shadow: none; /* IMPORTANT */
+}
+
+.profile3d-shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  width: 70%;
+  height: 40px;
+  transform: translateX(-50%);
+  filter: blur(18px);
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  border-radius: 50%;
+  transition: transform 0.15s ease-out;
+}

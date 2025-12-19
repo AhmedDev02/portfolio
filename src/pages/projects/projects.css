@@ -1,0 +1,67 @@
+.bg-ui-fade {
+  position: relative;
+  overflow: hidden;
+  border: black solid;
+}
+.dark .bg-ui-fade {
+  border: white solid 2px;
+}
+.bg-hack-fade {
+  position: relative;
+  border: black solid 2px;
+  overflow: hidden;
+}
+.dark .bg-hack-fade {
+  border: white solid 2px;
+}
+
+/* Background overlay */
+.bg-hack-fade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../../public/Coding Zero One GIF by Squirrel Monkey.gif");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 4s ease, transform 4s ease;
+  z-index: 0;
+  border-radius: inherit;
+}
+.bg-ui-fade::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../../public/Untitled video - Made with Clipchamp.gif");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 4s ease, transform 4s ease;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+/* Fade-in on hover */
+.bg-ui-fade:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keep text ABOVE background */
+.bg-ui-fade > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-hack-fade:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Keep text ABOVE background */
+.bg-hack-fade > * {
+  position: relative;
+  z-index: 2;
+}

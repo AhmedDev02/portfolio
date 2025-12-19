@@ -1,0 +1,61 @@
+/* Scrollbar styling */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #050f1d rgba(255, 255, 255, 0.05);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #050f1d rgba(255, 255, 255, 0.08);
+}
+
+.dark .custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #fff rgba(255, 255, 255, 0.05);
+}
+
+/* Firefox */
+.dark .custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #fff rgba(255, 255, 255, 0.08);
+}
+/* Chrome / Safari / Edge */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #5ce1e6;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.4);
+}
+.overlay:hover {
+  background: rgba(0, 0, 0, 0.4); /* transparent dark layer */
+  backdrop-filter: blur(4px); /* slight blur */
+  -webkit-backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.overlay-btn {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.6rem;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: 0.25s ease;
+}
+
+.overlay-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.06);
+}

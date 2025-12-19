@@ -1,0 +1,11 @@
+.glass {
+  /* Size & layout (adjust as needed) */
+  padding: 2rem;
+  border-radius: 3rem;
+  background: rgba(255, 255, 255, 0.12); /* transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.35); /* subtle border */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); /* depth */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari */
+  color: #ffffff;
+}

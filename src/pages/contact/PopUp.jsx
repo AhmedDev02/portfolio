@@ -36,8 +36,8 @@ function PopUp({ message, t, customLink = false, link }) {
       <img
         src={
           theme !== "dark"
-            ? `../../../public/darkmodelogo.png`
-            : `../../../public/lightmodelogo.png`
+            ? `/darkmodelogo.png`
+            : `/lightmodelogo.png`
         }
         className="w-15 h-15"
       />

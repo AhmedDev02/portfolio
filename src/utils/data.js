@@ -1,8 +1,22 @@
+import awaImg from "@/assets/projectsImages/awa.png";
+import worldWiseImg from "@/assets/projectsImages/worldwise.png";
+import reactQuizImg from "@/assets/projectsImages/reactquiz.png";
+import usePopcornImg from "@/assets/projectsImages/usepopcorn.png";
+import eatAndSplitImg from "@/assets/projectsImages/eat-and-split.png";
+import subway2DImg from "@/assets/projectsImages/2d-subway.png";
+import awaNativeImg from "@/assets/projectsImages/awa-native.png";
+import maptyImg from "@/assets/projectsImages/mapty.png";
+import bankistWebsiteImg from "@/assets/projectsImages/bankist-website.png";
+import bankistImg from "@/assets/projectsImages/bankist.png";
+import guessMyNumberImg from "@/assets/projectsImages/guess-my-number.png";
+import pigGameImg from "@/assets/projectsImages/pig-game.png";
+import spaceGameImg from "@/assets/projectsImages/space-game.png";
+
 export const arrayOfProjects = [
   {
     id: 1,
     title: "AWA – Real Estate Booking Platform",
-    image: "../../src/assets/projectsImages/Awa.png",
+    image: awaImg,
     technologyUsed: [
       "WordPress",
       "PHP",
@@ -25,7 +39,7 @@ export const arrayOfProjects = [
   {
     id: 2,
     title: "World Wise",
-    image: "../../src/assets/projectsImages/WorldWise.png",
+    image: worldWiseImg,
     technologyUsed: [
       "React",
       "Vite",
@@ -49,7 +63,7 @@ export const arrayOfProjects = [
   {
     id: 3,
     title: "React Quiz",
-    image: "../../src/assets/projectsImages/ReactQuiz.png",
+    image: reactQuizImg,
     technologyUsed: [
       "React",
       "JavaScript",
@@ -72,7 +86,7 @@ export const arrayOfProjects = [
   {
     id: 4,
     title: "usePopcorn",
-    image: "../../src/assets/projectsImages/usePopcorn.png",
+    image: usePopcornImg,
     technologyUsed: [
       "React",
       "OMDB API",
@@ -93,7 +107,7 @@ export const arrayOfProjects = [
   {
     id: 5,
     title: "Eat & Split",
-    image: "../../src/assets/projectsImages/EatAndSplit.png",
+    image: eatAndSplitImg,
     technologyUsed: [
       "React",
       "JavaScript",
@@ -113,7 +127,7 @@ export const arrayOfProjects = [
   {
     id: 6,
     title: "2D Subway Game",
-    image: "../../src/assets/projectsImages/2D-subway.png",
+    image: subway2DImg,
     technologyUsed: [
       "Java",
       "JavaFX",
@@ -133,7 +147,7 @@ export const arrayOfProjects = [
   {
     id: 7,
     title: "AWA – Front-End Booking Website",
-    image: "../../src/assets/projectsImages/AwaNative.png",
+    image: awaNativeImg,
     technologyUsed: ["HTML", "CSS", "SASS", "Bootstrap", "JavaScript"],
     description:
       "Front-end booking system for browsing properties, calculating reservation costs, selecting duration, and processing mock payments with receipt generation.",
@@ -143,10 +157,11 @@ export const arrayOfProjects = [
     role: "Front-End Developer",
     tags: ["Booking", "Frontend", "UI"],
   },
+
   {
     id: 8,
     title: "Mapty",
-    image: "../../src/assets/projectsImages/Mapty.png",
+    image: maptyImg,
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -164,13 +179,10 @@ export const arrayOfProjects = [
     tags: ["Fitness", "Maps", "Geolocation"],
   },
 
-  // ──────────────────────────────────────
-  // 9. BANKIST WEBSITE
-  // ──────────────────────────────────────
   {
     id: 9,
     title: "Bankist Website",
-    image: "../../src/assets/projectsImages/Bankist website.png",
+    image: bankistWebsiteImg,
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -188,13 +200,10 @@ export const arrayOfProjects = [
     tags: ["UI/UX", "Scrolling", "Animations"],
   },
 
-  // ──────────────────────────────────────
-  // 10. BANKIST
-  // ──────────────────────────────────────
   {
     id: 10,
     title: "Bankist",
-    image: "../../src/assets/projectsImages/bankist.png",
+    image: bankistImg,
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -211,13 +220,10 @@ export const arrayOfProjects = [
     tags: ["Finance", "Transactions", "Logic"],
   },
 
-  // ──────────────────────────────────────
-  // 11. GUESS MY NUMBER
-  // ──────────────────────────────────────
   {
     id: 11,
     title: "Guess My Number",
-    image: "../../src/assets/projectsImages/GuessMyNumber.png",
+    image: guessMyNumberImg,
     technologyUsed: ["JavaScript", "HTML", "CSS", "DOM Manipulation"],
     description:
       "Simple number guessing game where users guess a random number from 1 to 20. Features scoring, feedback messages, and a reset capability to replay.",
@@ -228,13 +234,10 @@ export const arrayOfProjects = [
     tags: ["Game", "JS Basics", "DOM"],
   },
 
-  // ──────────────────────────────────────
-  // 12. PIG GAME
-  // ──────────────────────────────────────
   {
     id: 12,
     title: "Pig Game",
-    image: "../../src/assets/projectsImages/PigGame.png",
+    image: pigGameImg,
     technologyUsed: ["JavaScript", "HTML", "CSS", "State Management"],
     description:
       "Two-player dice game where players take turns rolling and holding to reach 100 points without rolling a 1. Real-time UI updates and turn state tracking.",
@@ -245,13 +248,10 @@ export const arrayOfProjects = [
     tags: ["Game", "Dice", "State"],
   },
 
-  // ──────────────────────────────────────
-  // 13. SPACE GAME
-  // ──────────────────────────────────────
   {
     id: 13,
     title: "Space Game",
-    image: "../../src/assets/projectsImages/SpaceGame.png",
+    image: spaceGameImg,
     technologyUsed: ["JavaScript", "HTML", "CSS", "Animation"],
     description:
       "Two-player competitive shooting game featuring lifebars, health tracking, and real-time bullet collisions. Players battle to deplete opponent’s lifebar.",

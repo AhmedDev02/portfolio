@@ -123,7 +123,7 @@ function ProjectCell({ project, projectNumber, isMobile }) {
             } pointer-events-none`}
             src={project?.image}
             alt=""
-            lazy="loading"
+            loading="lazy"
           />
         </div>
       </div>

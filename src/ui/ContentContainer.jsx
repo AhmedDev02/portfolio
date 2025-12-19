@@ -8,7 +8,12 @@ function ContentContainer({ children }) {
     <>
       <ParticleBackground theme={theme} />
 
-      <div className="w-full min-h-screen mx-auto md:w-4/5">{children}</div>
+      <div
+        className={`w-full min-h-screen mx-auto md:w-4/5`}
+        style={{ backgroundColor: theme === "dark" ? "#111827" : "" }}
+      >
+        {children}
+      </div>
     </>
   );
 }

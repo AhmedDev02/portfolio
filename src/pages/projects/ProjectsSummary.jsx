@@ -9,6 +9,7 @@ import {
 import { FaPlus } from "react-icons/fa";
 import { useThemeContext } from "../../hooks/useThemeContext";
 import FadeUp from "../../animation-ui/FadeUp";
+import localFameLogo from "@/assets/localFameLogo.png";
 
 const Div = styled.div`
   width: 100%;
@@ -73,10 +74,7 @@ function ProjectsSummary({ isMobile }) {
           >
             Working at
           </h3>
-          <img
-            className="w-10 ml-auto mr-auto"
-            src="../../../public/localFameLogo.png"
-          />
+          <img className="w-10 ml-auto mr-auto" src={localFameLogo} />
         </FadeUp>
       </Block>
       <Block isMobile={isMobile} isDark={isDark}>

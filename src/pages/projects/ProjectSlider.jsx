@@ -1,8 +1,7 @@
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
 import ProjectCell from "./ProjectCell";
-import FadeIn from "../../animation-ui/FadeIn";
-import FadeRight from "../../animation-ui/FadeRight";
+
 import PopOutDiv from "../../animation-ui/PopOutDiv";
 
 function ProjectSlider({ projects, duration = 12, isMobile }) {

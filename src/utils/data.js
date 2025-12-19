@@ -2,7 +2,7 @@ export const arrayOfProjects = [
   {
     id: 1,
     title: "AWA – Real Estate Booking Platform",
-    image: "../../public/projectsImages/Awa.png",
+    image: "../../src/assets/projectsImages/Awa.png",
     technologyUsed: [
       "WordPress",
       "PHP",
@@ -25,7 +25,7 @@ export const arrayOfProjects = [
   {
     id: 2,
     title: "World Wise",
-    image: "../../public/projectsImages/WorldWise.png",
+    image: "../../src/assets/projectsImages/WorldWise.png",
     technologyUsed: [
       "React",
       "Vite",
@@ -49,7 +49,7 @@ export const arrayOfProjects = [
   {
     id: 3,
     title: "React Quiz",
-    image: "../../public/projectsImages/ReactQuiz.png",
+    image: "../../src/assets/projectsImages/ReactQuiz.png",
     technologyUsed: [
       "React",
       "JavaScript",
@@ -72,7 +72,7 @@ export const arrayOfProjects = [
   {
     id: 4,
     title: "usePopcorn",
-    image: "../../public/projectsImages/usePopcorn.png",
+    image: "../../src/assets/projectsImages/usePopcorn.png",
     technologyUsed: [
       "React",
       "OMDB API",
@@ -93,7 +93,7 @@ export const arrayOfProjects = [
   {
     id: 5,
     title: "Eat & Split",
-    image: "../../public/projectsImages/EatAndSplit.png",
+    image: "../../src/assets/projectsImages/EatAndSplit.png",
     technologyUsed: [
       "React",
       "JavaScript",
@@ -113,7 +113,7 @@ export const arrayOfProjects = [
   {
     id: 6,
     title: "2D Subway Game",
-    image: "../../public/projectsImages/2D-subway.png",
+    image: "../../src/assets/projectsImages/2D-subway.png",
     technologyUsed: [
       "Java",
       "JavaFX",
@@ -133,7 +133,7 @@ export const arrayOfProjects = [
   {
     id: 7,
     title: "AWA – Front-End Booking Website",
-    image: "../../public/projectsImages/AwaNative.png",
+    image: "../../src/assets/projectsImages/AwaNative.png",
     technologyUsed: ["HTML", "CSS", "SASS", "Bootstrap", "JavaScript"],
     description:
       "Front-end booking system for browsing properties, calculating reservation costs, selecting duration, and processing mock payments with receipt generation.",
@@ -146,7 +146,7 @@ export const arrayOfProjects = [
   {
     id: 8,
     title: "Mapty",
-    image: "../../public/projectsImages/Mapty.png",
+    image: "../../src/assets/projectsImages/Mapty.png",
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -170,7 +170,7 @@ export const arrayOfProjects = [
   {
     id: 9,
     title: "Bankist Website",
-    image: "../../public/projectsImages/Bankist website.png",
+    image: "../../src/assets/projectsImages/Bankist website.png",
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -194,7 +194,7 @@ export const arrayOfProjects = [
   {
     id: 10,
     title: "Bankist",
-    image: "../../public/projectsImages/bankist.png",
+    image: "../../src/assets/projectsImages/bankist.png",
     technologyUsed: [
       "JavaScript",
       "HTML",
@@ -217,7 +217,7 @@ export const arrayOfProjects = [
   {
     id: 11,
     title: "Guess My Number",
-    image: "../../public/projectsImages/GuessMyNumber.png",
+    image: "../../src/assets/projectsImages/GuessMyNumber.png",
     technologyUsed: ["JavaScript", "HTML", "CSS", "DOM Manipulation"],
     description:
       "Simple number guessing game where users guess a random number from 1 to 20. Features scoring, feedback messages, and a reset capability to replay.",
@@ -234,7 +234,7 @@ export const arrayOfProjects = [
   {
     id: 12,
     title: "Pig Game",
-    image: "../../public/projectsImages/PigGame.png",
+    image: "../../src/assets/projectsImages/PigGame.png",
     technologyUsed: ["JavaScript", "HTML", "CSS", "State Management"],
     description:
       "Two-player dice game where players take turns rolling and holding to reach 100 points without rolling a 1. Real-time UI updates and turn state tracking.",
@@ -251,7 +251,7 @@ export const arrayOfProjects = [
   {
     id: 13,
     title: "Space Game",
-    image: "../../public/projectsImages/SpaceGame.png",
+    image: "../../src/assets/projectsImages/SpaceGame.png",
     technologyUsed: ["JavaScript", "HTML", "CSS", "Animation"],
     description:
       "Two-player competitive shooting game featuring lifebars, health tracking, and real-time bullet collisions. Players battle to deplete opponent’s lifebar.",

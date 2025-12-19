@@ -5,9 +5,6 @@ import { FaCss3Alt, FaHtml5, FaJs, FaReact } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { BiLogoTypescript } from "react-icons/bi";
 import ProjectCellIcons from "./ProjectCellIcons";
-import SpinExpand from "../../animation-ui/SpinExpand";
-import TextWriter from "../../animation-ui/TextWriter";
-import FadeRight from "../../animation-ui/FadeRight";
 import SlideFade from "../../animation-ui/SlideFade";
 import { setSelectedProject } from "../../services/projectSelection";
 
@@ -124,7 +121,7 @@ function ProjectCell({ project, projectNumber, isMobile }) {
             className={`w-full h-full ${
               isMobile ? "object-fit" : "object-cover"
             } pointer-events-none`}
-            src={project?.image || "../../../public/Ahmed Tharwat.jpg"}
+            src={project?.image}
             alt=""
             lazy="loading"
           />

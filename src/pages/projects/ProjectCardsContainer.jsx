@@ -1,4 +1,3 @@
-import { FaStarOfLife } from "react-icons/fa";
 import ProjectCard from "./ProjectCard";
 import ProjectSlider from "./ProjectSlider";
 import { arrayOfProjects } from "../../utils/data";
@@ -8,8 +7,6 @@ import ProjectsSummary from "./ProjectsSummary";
 import { useThemeContext } from "../../hooks/useThemeContext";
 import useIsMobile from "../../hooks/useIsMobile";
 import PopOutDiv from "../../animation-ui/PopOutDiv";
-import FadeIn from "../../animation-ui/FadeIn";
-import FadeUp from "../../animation-ui/FadeUp";
 
 const FilterDiv = styled.div`
   display: flex;

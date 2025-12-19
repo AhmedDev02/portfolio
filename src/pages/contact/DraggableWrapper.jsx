@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 50%;
-  z-index: 90;
+  z-index: 39;
   cursor: grab;
   touch-action: none;
   /* Start at the top right */

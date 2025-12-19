@@ -39,7 +39,7 @@ export default function ProjectDetails({ project, isMobile }) {
       {/* Image */}
       <div className="relative w-full h-4/5 overflow-hidden rounded-xl shadow-lg group mb-6">
         <img
-          src={"../../utils/" + project.image}
+          src={project.image}
           alt={project.title}
           className="
     w-full h-full

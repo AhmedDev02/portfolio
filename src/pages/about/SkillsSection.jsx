@@ -15,7 +15,7 @@ import git from "../../assets/icons/GitHub.png";
 import gitDark from "../../assets/icons/gitDark.png";
 import firebase from "../../assets/icons/Firebase.png";
 import express from "../../assets/icons/Express.png";
-import expressDark from "../../assets/icons/ExpressDark.png";
+import expressDark from "../../assets/icons/expressDark.png";
 
 import mongodb from "../../assets/icons/MongoDB.png";
 import tailwind from "../../assets/icons/TailwindCSS.png";

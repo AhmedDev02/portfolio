@@ -1,5 +1,5 @@
 import TextWriter from "../animation-ui/TextWriter";
-import useTheme from "../Hooks/useTheme";
+import useTheme from "../hooks/useTheme";
 import Copyright from "./Copyright";
 import DarkModeToggle from "./DarkModeToggle";
 import Logo from "./Logo";

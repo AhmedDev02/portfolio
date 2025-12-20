@@ -16,10 +16,6 @@ const Wrapper = styled.div`
   z-index: 39;
   cursor: grab;
   touch-action: none;
-  /* Start at the top right */
-  transform: ${({ isMobile }) =>
-    isMobile ? "translate(80vw, 10vh)" : "translate(90vw, 2vh)"};
-
   &:active {
     cursor: grabbing;
   }
@@ -48,19 +44,36 @@ export default function DraggableWrapper({
     }
   }, []);
 
+  // useEffect(() => {
+  //   const el = ref.current;
+  //   if (!el) return;
+
+  //   // Reset physics
+  //   pos.current = { x: 0, y: 0 };
+  //   velocity.current = { x: 0, y: 0 };
+  //   last.current = { x: 0, y: 0, t: 0 };
+
+  //   cancelAnimationFrame(raf.current);
+
+  //   // Reset visual position (match your CSS start)
+  //   const x = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.9;
+  //   const y = isMobile ? window.innerHeight * 0.1 : window.innerHeight * 0.02;
+
+  //   pos.current = { x, y };
+  //   el.style.transform = `translate(${x}px, ${y}px)`;
+  // }, [isMobile]);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // Reset physics
-    pos.current = { x: 0, y: 0 };
-    velocity.current = { x: 0, y: 0 };
-    last.current = { x: 0, y: 0, t: 0 };
+    const rect = el.getBoundingClientRect();
 
-    cancelAnimationFrame(raf.current);
+    const margin = 16; // safety margin from edge
 
-    // Reset visual position (match your CSS start)
-    const x = isMobile ? window.innerWidth * 0.8 : window.innerWidth * 0.9;
+    const x = isMobile
+      ? window.innerWidth - rect.width - margin
+      : window.innerWidth - rect.width - margin;
+
     const y = isMobile ? window.innerHeight * 0.1 : window.innerHeight * 0.02;
 
     pos.current = { x, y };

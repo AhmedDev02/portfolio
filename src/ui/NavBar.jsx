@@ -31,7 +31,7 @@ function NavBar({ onOpen }) {
   }, [pathname]);
 
   return (
-    <nav className="nav-bar flex flex-col gap-4 mt-8 ">
+    <nav className="nav-bar flex flex-col gap-4 mt-8 z-70">
       <FadeLeftToRight delay={0.5}>
         <NavLink to="/home" className={ActiveFunction} onClick={onOpen}>
           {isDarkMode ? (

@@ -23,6 +23,7 @@ body,
 .layout-container {
   background-color: #f9fafb; //Tailwind bg-gray-50
   color: #1f2937; /* Tailwind text-gray-800 */
+  overflow-x: hidden;
 }
 
 /* --- DARK MODE OVERRIDE (Applied when 'dark' class is present on <html>) --- */

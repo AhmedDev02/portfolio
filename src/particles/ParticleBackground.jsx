@@ -49,12 +49,7 @@ function ParticleBackground({ theme }) {
   if (!init) return null;
   return (
     // 1. New Wrapper for 20% width and full height
-    <div
-      // Tailwind classes: w-1/5 (20% width), h-screen (full viewport height)
-      // Added absolute positioning to place it correctly as a background element
-      className="w-1/5 h-screen absolute top-0 left-0"
-      // The style prop is now cleaner as Tailwind handles dimensions
-    >
+    <div className="w-1/5 h-screen absolute top-0 left-0 ">
       {/* Particles fills the container (the 20% section) */}
       <Particles
         id="tsparticles"

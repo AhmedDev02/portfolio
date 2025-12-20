@@ -4,7 +4,6 @@ import ChatPanel from "./ChatPanel";
 import FadeButtonSwap from "../animation-ui/FadeButtonSwap";
 import CircularSpinButton from "./CircularSpinButton";
 import FadeUpKeep from "../animation-ui/FadeUpKeep";
-import FadeRightToLeft from "../animation-ui/FadeRightToLeft";
 import FadeUp from "../animation-ui/FadeUp";
 import styled from "styled-components";
 
@@ -18,11 +17,10 @@ const Span = styled.span`
 `;
 function ChatContainer({ isMobile }) {
   const [isChatOpen, setIsChatOpen] = useState(false);
-
   return (
-    <div className="min-w-1/3 z-37 relative">
+    <div className={`min-w-1/3 ${isChatOpen ? "z-37" : "z-35"}relative`}>
       {!isMobile && (
-        <div className="absolute ">
+        <div className="absolute z-6 ">
           <FadeUp isVisible={true}>
             <h1 className="text-2xl text-center font-extrabold mb-4">
               Got questions?

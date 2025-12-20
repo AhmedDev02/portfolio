@@ -17,7 +17,6 @@ const Menu = styled.button`
   left: 20px;
   font-size: 25px;
   z-index: 101;
-
   color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#000")};
 `;
 export const MenuDiv = styled.div`
@@ -27,15 +26,11 @@ export const MenuDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: ${({ theme }) =>
     theme === "dark" ? "#0f172a" : "#ffffff"};
-
   overflow-y: auto; /* ✅ allow scrolling inside menu */
   -webkit-overflow-scrolling: touch;
-
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
-
   transition: transform 300ms ease-in-out;
 `;
 function SideBar() {
@@ -44,6 +39,7 @@ function SideBar() {
   const isDarkMode = theme === "dark";
   const [open, setOpen] = useState(false);
   const isMobile = useIsMobile();
+
   useEffect(() => {
     if (!isMobile && open) {
       setOpen(false);
@@ -90,7 +86,7 @@ function SideBar() {
         />
         {isMobile && (
           <Menu
-            className="md:hidden "
+            className="md:hidden"
             isDarkMode={isDarkMode}
             onClick={() => setOpen((opened) => !opened)}
           >
@@ -98,7 +94,6 @@ function SideBar() {
           </Menu>
         )}
         {!isMobile && <Copyright />}
-        {/* {open && <></>} */}
         {
           <MenuDiv open={open} theme={isDarkMode ? "dark" : "light"}>
             <NavBar onOpen={() => setOpen((opened) => !opened)} />

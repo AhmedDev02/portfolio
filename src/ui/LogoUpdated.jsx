@@ -1,15 +1,16 @@
 import DropDownComponent from "../animation-ui/DropDownComponent";
 import HeartBeat from "../animation-ui/HeartBeat";
 
-function Logo({ dark, isMobile }) {
+function LogoUpdated({ dark, isMobile }) {
   const logoSrc = dark ? "/darkmodelogo.png" : "/lightmodelogo.png";
+  console.log(isMobile);
   return (
     <>
       {isMobile ? (
         <DropDownComponent>
           <div
-            className="flex flex-col items-center bg-transparent justify-center logo-container"
-            // style={{ background: "#111827" }}
+            className="flex flex-col items-center  justify-center logo-container"
+            style={{ background: dark ? "#111827" : "#fff" }}
           >
             <img
               src={logoSrc}
@@ -35,4 +36,4 @@ function Logo({ dark, isMobile }) {
   );
 }
 
-export default Logo;
+export default LogoUpdated;

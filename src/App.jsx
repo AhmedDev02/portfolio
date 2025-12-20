@@ -14,7 +14,6 @@ function App() {
   return (
     <ThemeContextProvider>
       <Toast />
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>

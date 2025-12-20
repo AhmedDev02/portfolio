@@ -23,8 +23,8 @@ function App() {
             <Route path="verified" element={<Verified />} />
             <Route path="about" element={<LetsTalk />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </ThemeContextProvider>

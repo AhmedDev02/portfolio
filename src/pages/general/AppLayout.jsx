@@ -6,6 +6,7 @@ import SideBarUpdated from "../../ui/SideBarUpdated";
 import { useEffect, useRef, useState } from "react";
 
 const FUNCTION_URL = import.meta.env.VITE_VISIT_FUNCTION_URL;
+const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 function AppLayout() {
   const tracked = useRef(false);
@@ -15,7 +16,14 @@ function AppLayout() {
     if (tracked.current) return;
     tracked.current = true;
 
-    fetch(FUNCTION_URL, { keepalive: true })
+    fetch(FUNCTION_URL, {
+      method: "GET",
+      keepalive: true,
+      headers: {
+        apikey: ANON_KEY,
+        Authorization: `Bearer ${ANON_KEY}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         if (typeof data?.totalVisitors === "number") {

@@ -11,7 +11,7 @@ function Copyright({ classStyles }) {
   return (
     <footer className={classStyles}>
       <h6
-        className=" text-center dark:text-gray-400! pt-2 text-gray-900"
+        className=" text-center dark:text-gray-400! pt-20 text-gray-900"
         style={{ fontSize: "8px" }}
       >
         This website uses anonymous analytics to count visits. No personal or

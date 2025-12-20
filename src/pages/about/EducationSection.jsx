@@ -23,7 +23,7 @@ export function EducationSection() {
         <CallToAction
           name="My Resume"
           icon={IoMdDownload}
-          link={"/Ahmed_Khalil-CV.pdf"}
+          link={"/Ahmed_Khalil_CV.pdf"}
           download
         />
       </div>

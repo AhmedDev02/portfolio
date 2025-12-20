@@ -4,6 +4,7 @@ import Eye from "./Eye";
 import useIsMobile from "../../hooks/useIsMobile";
 import DraggableWrapper from "./DraggableWrapper";
 import { useUI } from "../../hooks/useUI";
+import LoaderSpinning from "./LoaderSpinning";
 
 const Digits = styled.div`
   display: flex;
@@ -61,6 +62,7 @@ export default function Counter({ visitors }) {
   console.log(eyeOpen);
   const padded = String(visitors).padStart(2, "0");
   const { theme } = useThemeContext();
+
   if (isMobile) {
     return (
       eyeOpen && (
@@ -72,8 +74,14 @@ export default function Counter({ visitors }) {
           <Digits className="relative">
             {padded.split("").map((digit, i) => (
               <DigitCard key={i}>
-                <DigitTop theme={theme}>{digit}</DigitTop>
-                <DigitBottom>{digit}</DigitBottom>
+                {!visitors ? (
+                  <LoaderSpinning />
+                ) : (
+                  <>
+                    <DigitTop theme={theme}>{digit}</DigitTop>
+                    <DigitBottom>{digit}</DigitBottom>
+                  </>
+                )}
               </DigitCard>
             ))}
           </Digits>
@@ -91,8 +99,14 @@ export default function Counter({ visitors }) {
       <Digits className="relative mt-7">
         {padded.split("").map((digit, i) => (
           <DigitCard key={i}>
-            <DigitTop theme={theme}>{digit}</DigitTop>
-            <DigitBottom>{digit}</DigitBottom>
+            {!visitors ? (
+              <LoaderSpinning />
+            ) : (
+              <>
+                <DigitTop theme={theme}>{digit}</DigitTop>
+                <DigitBottom>{digit}</DigitBottom>
+              </>
+            )}
           </DigitCard>
         ))}
       </Digits>

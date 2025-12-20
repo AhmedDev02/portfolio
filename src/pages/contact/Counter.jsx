@@ -5,26 +5,6 @@ import useIsMobile from "../../hooks/useIsMobile";
 import DraggableWrapper from "./DraggableWrapper";
 import { useUI } from "../../hooks/useUI";
 
-const Wrapper = styled.div`
-  right: 20px;
-  top: ${({ isMobile }) => (isMobile ? "10%" : "2%")};
-  background: rgba(0, 0, 0, 0.2);
-  height: 150px;
-  width: 150px;
-  position: absolute;
-  padding: 10px 12px;
-  display: ${({ isMobile }) => (isMobile ? "flex" : "inline-flex")};
-  flex-direction: column;
-  align-items: center;
-  border-radius: 50%;
-  z-index: 1;
-  transform: ${({ isMobile }) =>
-    isMobile ? "translate(80vw, 10vh)" : "translate(90vw, 2vh)"};
-  &:active {
-    cursor: grabbing;
-  }
-`;
-
 const Digits = styled.div`
   display: flex;
   gap: 8px;

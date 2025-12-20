@@ -56,7 +56,6 @@ const iconsConfig = [
 function ProjectCell({ project, projectNumber, isMobile }) {
   const [hovered, setHovered] = useState(false);
 
-  console.log(project.image);
   return (
     <>
       <div

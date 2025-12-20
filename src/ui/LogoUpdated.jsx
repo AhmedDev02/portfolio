@@ -3,7 +3,6 @@ import HeartBeat from "../animation-ui/HeartBeat";
 
 function LogoUpdated({ dark, isMobile }) {
   const logoSrc = dark ? "/darkmodelogo.png" : "/lightmodelogo.png";
-  console.log(isMobile);
   return (
     <>
       {isMobile ? (

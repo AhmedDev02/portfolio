@@ -12,6 +12,13 @@ import useTheme from "../hooks/useTheme";
 import { useThemeContext } from "../hooks/useThemeContext";
 import LogoUpdated from "./LogoUpdated";
 import { useUI } from "../hooks/useUI";
+import {
+  PiEyeClosedBold,
+  PiEyeClosedDuotone,
+  PiEyeClosedFill,
+} from "react-icons/pi";
+import { LiaEyeSlash } from "react-icons/lia";
+import { FaEye, FaRegEye } from "react-icons/fa";
 
 /* =======================
    Styled Components
@@ -90,7 +97,14 @@ function SideBarUpdated() {
   const { toggleDarkMode } = useTheme();
   const isDarkMode = theme === "dark";
   const [open, setOpen] = useState(false);
-  const { setEyeOpen } = useUI();
+  const { eyeOpen, setEyeOpen } = useUI();
+  const EyeIcon = eyeOpen
+    ? isDarkMode
+      ? FaRegEye
+      : FaEye
+    : isDarkMode
+    ? PiEyeClosedBold
+    : PiEyeClosedDuotone;
 
   /* Lock body scroll when mobile menu is open */
   useEffect(() => {
@@ -132,29 +146,33 @@ function SideBarUpdated() {
         <MobileLogoWrapper>
           <LogoUpdated dark={isDarkMode} isMobile />
         </MobileLogoWrapper>
-
         <DarkModeToggle
           toggleDarkMode={toggleDarkMode}
           isDarkMode={isDarkMode}
           classStyles="absolute top-5 right-2 z-41"
         />
-
+        <EyeIcon
+          className={`block absolute top-15 right-4 text-4xl z-42 ${
+            isDarkMode ? "text-emerald-700" : ""
+          }`}
+          onClick={() => setEyeOpen((prev) => !prev)}
+        />
         <MenuButton
           $dark={isDarkMode}
           onClick={() => {
             setOpen((prev) => !prev);
-            setEyeOpen((prev) => !prev);
+            if (eyeOpen) {
+              setEyeOpen((prev) => !prev);
+            }
           }}
         >
           {open ? <RiCloseLine /> : <GiHamburgerMenu />}
         </MenuButton>
-
         <MobileOverlay $open={open} $mode={theme}>
           <NavBar
             onOpen={() => {
               setOpen(false);
-
-              setEyeOpen((prev) => !prev);
+              setEyeOpen(true);
             }}
           />
           <Copyright classStyles="absolute bottom-10" />

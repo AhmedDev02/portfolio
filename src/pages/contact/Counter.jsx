@@ -54,7 +54,7 @@ const Label = styled.div`
   z-index: 1;
 `;
 
-export default function Counter({ visitors = 346 }) {
+export default function Counter({ visitors }) {
   const isMobile = useIsMobile();
   const { eyeOpen } = useUI();
 

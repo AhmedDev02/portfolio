@@ -68,7 +68,10 @@ export default function StatusBanner({ cooldown, remaining, refreshTrigger }) {
       });
 
       const data = await res.json();
-      setTotalLikes(data.totalLikes);
+
+      // ✅ DO NOT overwrite totalLikes with stale data
+      setTotalLikes((prev) => Math.max(prev, data.totalLikes));
+
       setHasLiked(data.hasLiked);
       setLikeCooldownUntil(data.cooldownUntil);
     } catch (err) {

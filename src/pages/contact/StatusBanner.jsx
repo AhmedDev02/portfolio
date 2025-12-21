@@ -126,10 +126,8 @@ export default function StatusBanner({ cooldown, remaining, refreshTrigger }) {
     : 0;
 
   const label =
-    cooldown?.cooldownType === "reuse"
-      ? "Send with the same mail again in"
-      : cooldown?.cooldownType === "daily"
-      ? "Send again in"
+    cooldown?.cooldownType === "daily"
+      ? "Daily limit resets in"
       : "Ready to send";
 
   return (
@@ -143,7 +141,7 @@ export default function StatusBanner({ cooldown, remaining, refreshTrigger }) {
 
         <div className="flex items-center justify-around flex-col w-full">
           <br className="mt-20" />
-          {hasCooldown && (
+          {cooldown?.cooldownType === "daily" && (
             <PieTimer
               durationSec={durationSec}
               size={70}

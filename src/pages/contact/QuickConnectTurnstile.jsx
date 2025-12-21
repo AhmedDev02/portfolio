@@ -150,14 +150,7 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
         await onSent(); // refresh cooldown UI
 
         toast.custom((t) => (
-          <PopUp
-            t={t}
-            message={
-              data.cooldownType === "reuse"
-                ? "You can reuse the same email after the timer."
-                : "Daily limit reached. Try again later."
-            }
-          />
+          <PopUp t={t} message={"Daily limit reached. Try again later."} />
         ));
         return;
       }

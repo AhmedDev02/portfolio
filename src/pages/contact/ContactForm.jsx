@@ -26,16 +26,11 @@ export default function ContactForm({ onSent }) {
       /* =========================
          1️⃣ Ask backend for permission
       ========================= */
-      const res = await fetch(CONTACT_URL, {
+      const res = await fetch(import.meta.env.VITE_CONTACT_FUNCTION_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
+        body: JSON.stringify({ name, email, message }), // no token
       });
-
       const result = await res.json();
 
       if (res.status === 429) {
@@ -75,7 +70,6 @@ export default function ContactForm({ onSent }) {
       toast.custom((t) => <PopUp t={t} message="Message sent successfully!" />);
 
       reset();
-      await onSent();
     } catch (err) {
       console.error(err);
       toast.custom((t) => (

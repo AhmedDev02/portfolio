@@ -12,10 +12,7 @@ export default function ContactHub() {
 
   const fetchCooldown = useCallback(async () => {
     const res = await fetch(import.meta.env.VITE_COOLDOWN_FUNCTION_URL, {
-      headers: {
-        apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
-        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
-      },
+      method: "GET",
     });
 
     const data = await res.json();

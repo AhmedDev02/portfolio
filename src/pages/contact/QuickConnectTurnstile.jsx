@@ -11,7 +11,7 @@ import LoaderSpinning from "./LoaderSpinning";
 import { Turnstile } from "@marsidev/react-turnstile";
 import toast from "react-hot-toast";
 import PopUp from "./PopUp";
-import { Loader } from "lucide-react";
+import emailjs from "emailjs-com";
 
 const GmailImg = styled.img`
   animation: run 7s infinite ease-in-out;
@@ -110,7 +110,7 @@ const FUNCTION_URL = import.meta.env.VITE_CONTACT_FUNCTION_URL;
 
 export default function QuickConnectTurnstile({
   remaining,
-  setRemaining,
+
   onSent,
 }) {
   const [shortMSG, setShortMSG] = useState(false);
@@ -121,82 +121,84 @@ export default function QuickConnectTurnstile({
   const turnstileRef = useRef(null);
 
   // useEffect(() => {}, [token]);
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
     if (!token) {
-      toast.custom(
-        (t) => (
-          <PopUp
-            t={t}
-            message={"Please verify you are not a robot"}
-            customLink={false}
-          />
-        ),
-        {
-          duration: 10000,
-        }
-      );
+      toast.custom((t) => (
+        <PopUp t={t} message="Please verify you are not a robot" />
+      ));
       return;
     }
 
     try {
       setLoading(true);
 
+      /* =========================
+         1️⃣ Ask backend for permission
+      ========================= */
       const res = await fetch(FUNCTION_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          action: "send",
           email,
-          token,
+          token, // Turnstile token
         }),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        if (typeof data.remaining === "number") {
-          setRemaining(data.remaining);
-        }
+      if (res.status === 429) {
+        // ❌ blocked by cooldown or daily limit
+        await onSent(); // refresh cooldown UI
 
         toast.custom((t) => (
-          <PopUp t={t} message={data.error || "Submission blocked"} />
+          <PopUp
+            t={t}
+            message={
+              data.cooldownType === "reuse"
+                ? "You can reuse the same email after the timer."
+                : "Daily limit reached. Try again later."
+            }
+          />
         ));
         return;
       }
 
-      // ✅ success
-      if (typeof data.remaining === "number") {
-        setRemaining(data.remaining);
+      if (!res.ok) {
+        throw new Error("Backend rejected send");
       }
 
-      toast.custom(
-        (t) => <PopUp t={t} message={"Message sent successfully!"} />,
+      /* =========================
+         2️⃣ Send via EmailJS
+      ========================= */
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          duration: 10000,
-        }
+          email,
+          message:
+            "Hello! Dropping a message to connect and build something awesome.",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-      await onSent(); // 🔥 THIS IS WHERE await fetchCooldown() GOES
+
+      toast.custom((t) => <PopUp t={t} message="Message sent successfully!" />);
 
       setEmail("");
+      await onSent(); // refresh cooldown + remaining
+    } catch (err) {
+      console.error(err);
+      toast.custom((t) => (
+        <PopUp t={t} message="Something went wrong. Please try again." />
+      ));
     } finally {
       setToken(null);
-      turnstileRef.current?.reset(); // 🔥 THIS LINE
+      turnstileRef.current?.reset();
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetch(FUNCTION_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ action: "check" }),
-    })
-      .then((r) => r.json())
-      .then((d) => setRemaining(d.remaining));
-  }, []);
-
   function handleShortTextClick() {
     setShortMSG((shortMessage) => !shortMessage);
   }

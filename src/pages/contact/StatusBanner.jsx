@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import PieTimer from "./PieTimer";
 import toast from "react-hot-toast";
 import PopUp from "./PopUp";
-import PieTimerUpdate from "./PieTimerUpdate";
 
 const Block = styled.div`
   display: flex;
@@ -28,14 +27,6 @@ export default function StatusBanner({ cooldown, remaining, refreshTrigger }) {
   const [likeCooldownUntil, setLikeCooldownUntil] = useState(null);
   const [likeLoading, setLikeLoading] = useState(false);
   const [now, setNow] = useState(() => Date.now());
-  const [cooldownDuration, setCooldownDuration] = useState(0);
-
-  useEffect(() => {
-    if (cooldown?.cooldownUntil) {
-      const total = Math.floor((cooldown.cooldownUntil - Date.now()) / 1000);
-      setCooldownDuration(total);
-    }
-  }, [cooldown?.cooldownUntil]);
 
   // Update clock every second
   useEffect(() => {
@@ -153,8 +144,8 @@ export default function StatusBanner({ cooldown, remaining, refreshTrigger }) {
         <div className="flex items-center justify-around flex-col w-full">
           <br className="mt-20" />
           {hasCooldown && (
-            <PieTimerUpdate
-              durationSec={cooldownDuration}
+            <PieTimer
+              durationSec={durationSec}
               size={70}
               onComplete={() =>
                 toast.custom((t) => (

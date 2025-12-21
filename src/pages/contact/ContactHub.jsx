@@ -23,7 +23,7 @@ export default function ContactHub() {
     const data = await res.json();
     setRemaining(data.remaining);
     setCooldown(data);
-    setRefreshStats(prev => prev + 1); // Trigger stats refresh
+    setRefreshStats((prev) => prev + 1); // Trigger stats refresh
   }, []);
 
   useEffect(() => {
@@ -40,17 +40,16 @@ export default function ContactHub() {
           onSent={fetchCooldown} // ✅ Only quick updates cooldown
         />
       )}
-      {tab === "form" && (
-        <ContactForm />  {/* ❌ Removed onSent prop */}
-      )}
+      {tab === "form" && <ContactForm />}
       {tab === "quick" && (
         <StatusBanner remaining={remaining} cooldown={cooldown} />
       )}
       <p className="text-xs block" style={{ marginTop: "20px" }}>
-        When you submit the contact form or like the page, I process your email address (contact only) and a
-        hashed representation of your IP address for security, abuse
-        prevention, and rate limiting. This data is automatically deleted
-        within 24 hours and is not used for tracking or marketing.
+        When you submit the contact form or like the page, I process your email
+        address (contact only) and a hashed representation of your IP address
+        for security, abuse prevention, and rate limiting. This data is
+        automatically deleted within 24 hours and is not used for tracking or
+        marketing.
       </p>
     </div>
   );

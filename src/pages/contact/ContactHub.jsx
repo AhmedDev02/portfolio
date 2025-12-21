@@ -37,12 +37,17 @@ export default function ContactHub() {
       {tab === "quick" && (
         <QuickConnectTurnstile
           remaining={remaining}
+          refreshStats={refreshStats}
           onSent={fetchCooldown} // ✅ Only quick updates cooldown
         />
       )}
       {tab === "form" && <ContactForm />}
       {tab === "quick" && (
-        <StatusBanner remaining={remaining} cooldown={cooldown} />
+        <StatusBanner
+          remaining={remaining}
+          cooldown={cooldown}
+          refreshTrigger={refreshStats}
+        />
       )}
       <p className="text-xs block" style={{ marginTop: "20px" }}>
         When you submit the contact form or like the page, I process your email

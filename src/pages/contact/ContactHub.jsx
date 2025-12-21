@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
@@ -12,9 +12,11 @@ import PopUp from "./PopUp";
 import QuickConnectTurnstile from "./QuickConnectTurnstile";
 
 export default function ContactHub() {
+  const [cooldown, setCooldown] = useState(null);
   const [tab, setTab] = useState("quick");
   const { register, handleSubmit, reset, watch } = useForm();
   const [loading, setLoading] = useState(false);
+  const [remaining, setRemaining] = useState(null);
 
   const messageValue = watch("message") || "";
   const MAX_CHARS = 1000;
@@ -125,13 +127,32 @@ export default function ContactHub() {
     }
   };
 
+  async function fetchCooldown() {
+    const res = await fetch(import.meta.env.VITE_COOLDOWN_FUNCTION_URL, {
+      headers: {
+        apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+      },
+    });
+
+    const data = await res.json();
+    setRemaining(data.remaining);
+    setCooldown(data);
+  }
+  useEffect(() => {
+    fetchCooldown();
+  }, []);
   return (
     <div className="w-full relative max-w-2xl mx-auto mt-15 p-6 bg-transparent rounded-xl shadow-sm">
       <SocialIcons />
       <Tabs tab={tab} setTab={setTab} />
-
-      {tab === "quick" && <QuickConnectTurnstile />}
-
+      {tab === "quick" && (
+        <QuickConnectTurnstile
+          remaining={remaining}
+          setRemaining={setRemaining}
+          onSent={fetchCooldown}
+        />
+      )}
       {tab === "form" && (
         <ContactForm
           register={register}
@@ -142,7 +163,9 @@ export default function ContactHub() {
           loading={loading}
         />
       )}
-      {tab === "quick" && <StatusBanner />}
+      {tab === "quick" && (
+        <StatusBanner remaining={remaining} cooldown={cooldown} />
+      )}
       {
         <p className="text-xs block" style={{ marginTop: "20px" }}>
           When you submit the contact form, I process your email address and a

@@ -108,13 +108,16 @@ const P = styled.p`
 `;
 const FUNCTION_URL = import.meta.env.VITE_CONTACT_FUNCTION_URL;
 
-export default function QuickConnectTurnstile() {
+export default function QuickConnectTurnstile({
+  remaining,
+  setRemaining,
+  onSent,
+}) {
   const [shortMSG, setShortMSG] = useState(false);
   const { theme } = useThemeContext();
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState(null);
   const [email, setEmail] = useState("");
-  const [remaining, setRemaining] = useState(null);
   const turnstileRef = useRef(null);
 
   // useEffect(() => {}, [token]);
@@ -174,6 +177,8 @@ export default function QuickConnectTurnstile() {
           duration: 10000,
         }
       );
+      await onSent(); // 🔥 THIS IS WHERE await fetchCooldown() GOES
+
       setEmail("");
     } finally {
       setToken(null);

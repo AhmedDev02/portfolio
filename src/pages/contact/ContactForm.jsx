@@ -33,7 +33,6 @@ export default function ContactForm({ onSent }) {
           name,
           email,
           message,
-          // NO token
         }),
       });
 
@@ -47,7 +46,7 @@ export default function ContactForm({ onSent }) {
             t={t}
             message={
               result.cooldownType === "reuse"
-                ? "You can reuse the same email after the timer."
+                ? "You can reuse the same email 2 min after the last send."
                 : "Daily limit reached. Try again later."
             }
           />

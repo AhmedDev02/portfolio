@@ -108,11 +108,7 @@ const P = styled.p`
 `;
 const FUNCTION_URL = import.meta.env.VITE_CONTACT_FUNCTION_URL;
 
-export default function QuickConnectTurnstile({
-  remaining,
-
-  onSent,
-}) {
+export default function QuickConnectTurnstile({ remaining, onSent }) {
   const [shortMSG, setShortMSG] = useState(false);
   const { theme } = useThemeContext();
   const [loading, setLoading] = useState(false);

@@ -196,7 +196,7 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
     }
   };
   function handleShortTextClick() {
-    setShortMSG((shortMessage) => !shortMessage);
+    setShortMSG((prev) => !prev);
   }
 
   return (

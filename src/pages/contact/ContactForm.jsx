@@ -8,7 +8,7 @@ import PopUp from "./PopUp";
 
 const CONTACT_URL = import.meta.env.VITE_CONTACT_FUNCTION_URL;
 const MAX_CHARS = 1000;
-export default function ContactForm({ onSent }) {
+export default function ContactForm() {
   const { theme } = useThemeContext();
   const { register, handleSubmit, watch, reset } = useForm();
   const [loading, setLoading] = useState(false);
@@ -34,8 +34,6 @@ export default function ContactForm({ onSent }) {
       const result = await res.json();
 
       if (res.status === 429) {
-        await onSent();
-
         toast.custom((t) => (
           <PopUp
             t={t}
@@ -77,6 +75,7 @@ export default function ContactForm({ onSent }) {
       ));
     } finally {
       setLoading(false);
+      reset();
     }
   };
 

@@ -32,13 +32,9 @@ export default function ContactHub() {
       <SocialIcons />
       <Tabs tab={tab} setTab={setTab} />
       {tab === "quick" && (
-        <QuickConnectTurnstile
-          remaining={remaining}
-          // setRemaining={setRemaining}
-          onSent={fetchCooldown}
-        />
+        <QuickConnectTurnstile remaining={remaining} onSent={fetchCooldown} />
       )}
-      {tab === "form" && <ContactForm onSent={fetchCooldown} />}
+      {tab === "form" && <ContactForm />}
       {tab === "quick" && (
         <StatusBanner remaining={remaining} cooldown={cooldown} />
       )}

@@ -22,12 +22,12 @@ const ChatInput = ({ input, setInput, handleSendMessage, isLoading }) => {
       className={`p-4 border-t flex-shrink-0 ${formBg} z-40`}
     >
       <div className="flex items-center space-x-3">
-        <input
-          type="text"
+        <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask your question..."
-          className={`flex-1 p-3 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 shadow-inner text-sm ${inputStyle}`}
+          rows={1}
+          className={`resize-none overflow-hidden whitespace-pre-wrap break-words flex-1 p-3 rounded-xl  focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition duration-150 shadow-inner text-sm ${inputStyle} h-15 md:h-20 `}
           disabled={isLoading}
         />
 

@@ -166,7 +166,7 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          email,
+          mail: email,
           message:
             "Hello! Dropping a message to connect and build something awesome.",
         },

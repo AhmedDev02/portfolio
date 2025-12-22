@@ -58,7 +58,7 @@ const ChatMessage = ({ message }) => {
   };
 
   return (
-    <div className={`flex ${alignment} mb-4`}>
+    <div className={`flex ${alignment} mb-4 `}>
       <div
         className={`flex items-start max-w-[85%] sm:max-w-[75%] ${
           isUser ? "flex-row-reverse" : "flex-row"
@@ -78,7 +78,7 @@ const ChatMessage = ({ message }) => {
             isUser ? "rounded-tr-none" : "rounded-tl-none"
           } transition-all duration-300`}
         >
-          <p className="text-sm leading-relaxed whitespace-pre-wrap">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap break-all">
             {formatText(message.text)}
           </p>
         </div>

@@ -11,10 +11,7 @@ const ChatMessage = ({ message }) => {
   const roleIcon = isUser ? (
     <User className={`w-4 h-4 ${iconColor}`} />
   ) : (
-    <img
-      src={"../../public/lightmodelogo.png"}
-      className={`w-4 h-4 ${iconColor}`}
-    />
+    <img src={"./lightmodelogo.png"} className={`w-4 h-4 ${iconColor}`} />
   );
 
   // AVATAR CIRCLE

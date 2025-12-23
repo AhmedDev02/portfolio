@@ -7,7 +7,7 @@ import ChatInput from "./ChatInput.jsx";
 import { useThemeContext } from "../hooks/useThemeContext";
 
 const CHAT_INITIAL_MESSAGE = {
-  role: "ai",
+  role: "assistant", // FIX: was "ai"
   text: "Hello! I'm Ahmed Thatwat's Portfolio Assistant. I'm here to answer any questions about his background, expertise, or projects. Try asking me about his 'expertise' or 'background'!",
 };
 
@@ -18,17 +18,28 @@ const ChatPanel = ({ onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Auto-scroll
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [cooldown, setCooldown] = useState(0);
+  const [resetAt, setResetAt] = useState(null);
+
+  // Auto-scroll (unchanged)
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, isLoading]);
+
+  // Cooldown timer
+  useEffect(() => {
+    if (cooldown <= 0) return;
+    const t = setInterval(() => setCooldown((c) => c - 1), 1000);
+    return () => clearInterval(t);
+  }, [cooldown]);
 
   // Send message
   const handleSendMessage = async (e) => {
     e.preventDefault();
 
     const trimmedInput = input.trim();
-    if (!trimmedInput || isLoading) return;
+    if (!trimmedInput || isLoading || isBlocked || cooldown > 0) return;
 
     setIsLoading(true);
 
@@ -37,33 +48,61 @@ const ChatPanel = ({ onClose }) => {
     setInput("");
 
     try {
-      const response = await fetch("http://localhost:3001/generate-content", {
+      const response = await fetch(import.meta.env.VITE_CHAT_FUNCTION_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: trimmedInput }),
+        headers: {
+          "Content-Type": "application/json",
+          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({ message: trimmedInput }),
       });
 
-      if (!response.ok) throw new Error("Non-OK response from server");
-
       const data = await response.json();
-      const newAiMessage = {
-        role: "ai",
-        text: data?.text || "⚠️ AI returned an empty response.",
-      };
+      console.log(data);
+      // ⏳ Cooldown (429)
+      if (response.status === 429) {
+        setCooldown(data.retryAfterSeconds ?? 5);
+        return;
+      }
 
-      setMessages((prev) => [...prev, newAiMessage]);
+      // 🚫 Blocked (daily limit)
+      if (data.blocked) {
+        setIsBlocked(true);
+        setResetAt(data.resetAt);
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", text: data.message },
+        ]);
+        setIsLoading(false);
+
+        return;
+      }
+
+      // ✅ Success
+      if (data.ok) {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", text: data.reply },
+        ]);
+      } else {
+        throw new Error("Unexpected response");
+      }
     } catch (err) {
       console.error("Chat error:", err);
       setMessages((prev) => [
         ...prev,
-        { role: "ai", text: "⚠️ The AI server is offline or unreachable." },
+        {
+          role: "assistant",
+          text: "⚠️ Service unavailable. Please try again shortly.",
+        },
       ]);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // THEME VALUES
+  // THEME VALUES (UNCHANGED)
   const containerBg =
     theme === "dark"
       ? "bg-gray-950 border-gray-800"
@@ -96,14 +135,12 @@ const ChatPanel = ({ onClose }) => {
         {isLoading && (
           <div className="flex justify-start mb-4 z-40">
             <div className="flex items-start max-w-[75%] flex-row">
-              {/* Avatar */}
               <div
                 className={`p-2 rounded-full shadow-md flex-shrink-0 mt-1 ${typingAvatar}`}
               >
                 <Cpu className="w-4 h-4 text-white" />
               </div>
 
-              {/* Bubble */}
               <div
                 className={`mx-3 p-3 rounded-xl shadow-lg border rounded-tl-none ${typingBubble}`}
               >
@@ -129,7 +166,7 @@ const ChatPanel = ({ onClose }) => {
       <ChatInput
         input={input}
         setInput={setInput}
-        isLoading={isLoading}
+        isLoading={isLoading || isBlocked || cooldown > 0}
         handleSendMessage={handleSendMessage}
       />
     </div>

@@ -28,9 +28,7 @@ function ChatHeader({ onClose }) {
         <MessageSquare className={`${iconColor} w-5 h-5`} />
       </div>
 
-      <h1 className={`text-xl font-bold ml-3 ${titleColor}`}>
-        Ahmed's Portfolio Assistant
-      </h1>
+      <h1 className={`text-xl font-bold ml-3 ${titleColor}`}>Ahmed GPT</h1>
 
       {theme !== "dark" ? (
         <IoIosCloseCircle

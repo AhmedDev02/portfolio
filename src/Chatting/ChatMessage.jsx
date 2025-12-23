@@ -11,7 +11,10 @@ const ChatMessage = ({ message }) => {
   const roleIcon = isUser ? (
     <User className={`w-4 h-4 ${iconColor}`} />
   ) : (
-    <Cpu className={`w-4 h-4 ${iconColor}`} />
+    <img
+      src={"../../public/lightmodelogo.png"}
+      className={`w-4 h-4 ${iconColor}`}
+    />
   );
 
   // AVATAR CIRCLE
@@ -31,7 +34,7 @@ const ChatMessage = ({ message }) => {
 
   // FORMATTED TEXT
   const formatText = (text) => {
-    const parts = text.split(/(\*\*.*?\*\*)/g).map((part, index) => {
+    const parts = text?.split(/(\*\*.*?\*\*)/g)?.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
           <strong key={index} className="font-bold ">
@@ -42,7 +45,7 @@ const ChatMessage = ({ message }) => {
       return part;
     });
 
-    return parts.flatMap((part, i) =>
+    return parts?.flatMap((part, i) =>
       typeof part === "string" ? (
         part.split("\n").map((line, j) => (
           <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
@@ -58,7 +61,7 @@ const ChatMessage = ({ message }) => {
   };
 
   return (
-    <div className={`flex ${alignment} mb-4 `}>
+    <div className={`flex ${alignment} `}>
       <div
         className={`flex items-start max-w-[85%] sm:max-w-[75%] ${
           isUser ? "flex-row-reverse" : "flex-row"
@@ -78,7 +81,7 @@ const ChatMessage = ({ message }) => {
             isUser ? "rounded-tr-none" : "rounded-tl-none"
           } transition-all duration-300`}
         >
-          <p className="text-sm leading-relaxed whitespace-pre-wrap break-all">
+          <p className="text-sm leading-relaxed whitespace-pre-wrap break-word">
             {formatText(message.text)}
           </p>
         </div>

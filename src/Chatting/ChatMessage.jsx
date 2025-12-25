@@ -45,14 +45,15 @@ const ChatMessage = ({ message }) => {
     });
 
     return parts?.flatMap((part, i) => {
-      console.log(part);
-      typeof part === "string" ? (
-        part.split("\n").map((line, j) => (
+      if (typeof part === "string") {
+        return part.split("\n").map((line, j) => (
           <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
             {line}
           </span>
-        ))
-      ) : (
+        ));
+      }
+
+      return (
         <span key={i} className="block mb-1 last:mb-0">
           {part}
         </span>

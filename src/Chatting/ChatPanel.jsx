@@ -48,6 +48,12 @@ const ChatPanel = ({ onClose }) => {
     setInput("");
 
     try {
+      const recentMessages = messages
+        .slice(-6) // keep last 6 messages
+        .map((m) => ({
+          role: m.role,
+          text: m.text,
+        }));
       const response = await fetch(import.meta.env.VITE_CHAT_FUNCTION_URL, {
         method: "POST",
         headers: {
@@ -55,7 +61,10 @@ const ChatPanel = ({ onClose }) => {
           apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
         },
-        body: JSON.stringify({ message: trimmedInput }),
+        body: JSON.stringify({
+          history: recentMessages,
+          message: trimmedInput,
+        }),
       });
 
       const data = await response.json();

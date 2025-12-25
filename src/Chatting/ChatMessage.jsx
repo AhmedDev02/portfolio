@@ -2,6 +2,8 @@ import { Cpu, User } from "lucide-react";
 import { useThemeContext } from "../hooks/useThemeContext";
 
 const ChatMessage = ({ message }) => {
+  console.log("ChatMessage render:", message);
+
   const { theme } = useThemeContext();
   const isUser = message.role === "user";
 
@@ -30,31 +32,48 @@ const ChatMessage = ({ message }) => {
   const alignment = isUser ? "justify-end" : "justify-start";
 
   // FORMATTED TEXT
+  // const formatText = (text) => {
+  //   const parts = text?.split(/(\*\*.*?\*\*)/g)?.map((part, index) => {
+  //     if (part.startsWith("**") && part.endsWith("**")) {
+  //       return (
+  //         <strong key={index} className="font-bold ">
+  //           {part.slice(2, -2)}
+  //         </strong>
+  //       );
+  //     }
+  //     return part;
+  //   });
+
+  //   return parts?.flatMap((part, i) => {
+  //     console.log(part);
+  //     typeof part === "string" ? (
+  //       part.split("\n").map((line, j) => (
+  //         <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
+  //           {line}
+  //         </span>
+  //       ))
+  //     ) : (
+  //       <span key={i} className="block mb-1 last:mb-0">
+  //         {part}
+  //       </span>
+  //     );
+  //   });
+  // };
   const formatText = (text) => {
-    const parts = text?.split(/(\*\*.*?\*\*)/g)?.map((part, index) => {
+    return text.split(/(\*\*.*?\*\*)/g).flatMap((part, i) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={index} className="font-bold ">
+          <strong key={i} className="block font-semibold">
             {part.slice(2, -2)}
           </strong>
         );
       }
-      return part;
-    });
 
-    return parts?.flatMap((part, i) => {
-      console.log(part);
-      typeof part === "string" ? (
-        part.split("\n").map((line, j) => (
-          <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
-            {line}
-          </span>
-        ))
-      ) : (
-        <span key={i} className="block mb-1 last:mb-0">
-          {part}
+      return part.split("\n").map((line, j) => (
+        <span key={`${i}-${j}`} className="block">
+          {line}
         </span>
-      );
+      ));
     });
   };
 
@@ -81,6 +100,7 @@ const ChatMessage = ({ message }) => {
         >
           <p className="text-sm leading-relaxed whitespace-pre-wrap break-word">
             {formatText(message.text)}
+            {/* {message?.text} */}
           </p>
         </div>
       </div>

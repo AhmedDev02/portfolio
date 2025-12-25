@@ -136,9 +136,10 @@ const ChatPanel = ({ onClose }) => {
 
       {/* Messages area */}
       <div className={`flex-1 overflow-y-auto p-4 space-y-4 z-40 ${chatBg}`}>
-        {messages.map((msg, i) => (
-          <ChatMessage key={i} message={msg} />
-        ))}
+        {messages.map((msg, i) => {
+          console.log(msg);
+          return <ChatMessage key={i} message={msg} />;
+        })}
 
         {/* Typing indicator */}
         {isLoading && (

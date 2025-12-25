@@ -92,7 +92,7 @@ const ChatPanel = ({ onClose }) => {
       if (data.ok) {
         setMessages((prev) => [
           ...prev,
-          { role: "assistant", text: data.reply },
+          { role: "assistant", text: data.text },
         ]);
       } else {
         throw new Error("Unexpected response");

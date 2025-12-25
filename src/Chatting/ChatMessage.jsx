@@ -42,7 +42,8 @@ const ChatMessage = ({ message }) => {
       return part;
     });
 
-    return parts?.flatMap((part, i) =>
+    return parts?.flatMap((part, i) => {
+      console.log(part);
       typeof part === "string" ? (
         part.split("\n").map((line, j) => (
           <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
@@ -53,8 +54,8 @@ const ChatMessage = ({ message }) => {
         <span key={i} className="block mb-1 last:mb-0">
           {part}
         </span>
-      )
-    );
+      );
+    });
   };
 
   return (

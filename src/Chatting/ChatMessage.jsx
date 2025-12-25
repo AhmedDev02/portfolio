@@ -32,48 +32,31 @@ const ChatMessage = ({ message }) => {
   const alignment = isUser ? "justify-end" : "justify-start";
 
   // FORMATTED TEXT
-  // const formatText = (text) => {
-  //   const parts = text?.split(/(\*\*.*?\*\*)/g)?.map((part, index) => {
-  //     if (part.startsWith("**") && part.endsWith("**")) {
-  //       return (
-  //         <strong key={index} className="font-bold ">
-  //           {part.slice(2, -2)}
-  //         </strong>
-  //       );
-  //     }
-  //     return part;
-  //   });
-
-  //   return parts?.flatMap((part, i) => {
-  //     console.log(part);
-  //     typeof part === "string" ? (
-  //       part.split("\n").map((line, j) => (
-  //         <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
-  //           {line}
-  //         </span>
-  //       ))
-  //     ) : (
-  //       <span key={i} className="block mb-1 last:mb-0">
-  //         {part}
-  //       </span>
-  //     );
-  //   });
-  // };
   const formatText = (text) => {
-    return text.split(/(\*\*.*?\*\*)/g).flatMap((part, i) => {
+    const parts = text?.split(/(\*\*.*?\*\*)/g)?.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
         return (
-          <strong key={i} className="block font-semibold">
+          <strong key={index} className="font-bold ">
             {part.slice(2, -2)}
           </strong>
         );
       }
+      return part;
+    });
 
-      return part.split("\n").map((line, j) => (
-        <span key={`${i}-${j}`} className="block">
-          {line}
+    return parts?.flatMap((part, i) => {
+      console.log(part);
+      typeof part === "string" ? (
+        part.split("\n").map((line, j) => (
+          <span key={`${i}-${j}`} className="block mb-1 last:mb-0">
+            {line}
+          </span>
+        ))
+      ) : (
+        <span key={i} className="block mb-1 last:mb-0">
+          {part}
         </span>
-      ));
+      );
     });
   };
 

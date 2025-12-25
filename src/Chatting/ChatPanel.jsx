@@ -90,6 +90,7 @@ const ChatPanel = ({ onClose }) => {
 
       // ✅ Success
       if (data.ok) {
+        console.log(data);
         setMessages((prev) => [
           ...prev,
           { role: "assistant", text: data.text },

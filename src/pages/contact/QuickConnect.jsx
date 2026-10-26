@@ -62,7 +62,8 @@ const Button = styled.button`
   border-radius: 10px;
   transition: all 0.3s;
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    box-shadow:
+      rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
 `;
@@ -150,7 +151,7 @@ export default function QuickConnect() {
         ),
         {
           duration: Infinity,
-        }
+        },
       );
       setLoading(false);
       return;
@@ -180,7 +181,7 @@ export default function QuickConnect() {
             ),
             {
               duration: Infinity,
-            }
+            },
           );
         }
 
@@ -204,7 +205,7 @@ export default function QuickConnect() {
 
       if (!cooldown.allowed) {
         toast.error(
-          `Wait ${cooldown.hoursLeft} hour(s) before messaging again.`
+          `Wait ${cooldown.hoursLeft} hour(s) before messaging again.`,
         );
         setLoading(false);
         return;
@@ -299,11 +300,11 @@ export default function QuickConnect() {
       </PopOutLink>
 
       <PopOutLink
-        href="https://wa.me/201147516175"
+        href="https://wa.me/491622716543"
         className="p-5 bg-gradient-to-br cursor-pointer from-purple-50 to-white rounded-xl border border-gray-200 hover:shadow transition"
         target="_blank"
       >
-        <a href="https://wa.me/201147516175" target="_blank">
+        <a href="https://wa.me/491622716543" target="_blank">
           <div className="flex items-center gap-3 mb-3 ">
             <img
               src="/whatsappLogo.png"

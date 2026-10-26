@@ -60,7 +60,8 @@ const Button = styled.button`
   border-radius: 10px;
   transition: all 0.3s;
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    box-shadow:
+      rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
   }
   &:disabled {
@@ -170,7 +171,7 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
           message:
             "Hello! Dropping a message to connect and build something awesome.",
         },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
 
       toast.custom((t) => <PopUp t={t} message="Message sent successfully!" />);
@@ -232,8 +233,8 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
                 {remaining === null
                   ? "Checking availability..."
                   : remaining > 0
-                  ? `${remaining} send${remaining === 1 ? "" : "s"} left`
-                  : "Ran out of sends"}
+                    ? `${remaining} send${remaining === 1 ? "" : "s"} left`
+                    : "Ran out of sends"}
               </h3>
             </h3>
           </div>
@@ -290,11 +291,11 @@ export default function QuickConnectTurnstile({ remaining, onSent }) {
         </PopOutLink>
 
         <PopOutLink
-          href="https://wa.me/201147516175"
+          href="https://wa.me/491622716543"
           className="p-5 bg-gradient-to-br cursor-pointer from-purple-50 to-white rounded-xl border border-gray-200 hover:shadow transition"
           target="_blank"
         >
-          <a href="https://wa.me/201147516175" target="_blank">
+          <a href="https://wa.me/491622716543" target="_blank">
             <div className="flex items-center gap-3 mb-3 ">
               <img
                 src="/whatsappLogo.png"

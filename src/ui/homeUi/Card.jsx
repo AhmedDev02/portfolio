@@ -34,8 +34,8 @@ export default function Card() {
       </ul>
 
       <div className="card-info">
-        <p className="title">Ahmed Tharwat</p>
-        <p className="subtitle">Web Developer</p>
+        <p className="title">Ahmed Khalil</p>
+        <p className="subtitle">Full-Stack Engineer</p>
       </div>
     </div>
   );

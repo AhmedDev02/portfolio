@@ -103,8 +103,8 @@ function SideBarUpdated() {
       ? FaRegEye
       : FaEye
     : isDarkMode
-    ? PiEyeClosedBold
-    : PiEyeClosedDuotone;
+      ? PiEyeClosedBold
+      : PiEyeClosedDuotone;
 
   /* Lock body scroll when mobile menu is open */
   useEffect(() => {
@@ -186,13 +186,7 @@ function SideBarUpdated() {
         <div className="z-30">
           <LogoUpdated dark={isDarkMode} />
 
-          <TextWriter
-            arrayOfTexts={[
-              "Ahmed Tharwat",
-              "Frontend Developer",
-              "React Developer",
-            ]}
-          />
+          <TextWriter arrayOfTexts={["Ahmed Khalil", "Full-Stack Engineer"]} />
 
           <NavBar />
         </div>

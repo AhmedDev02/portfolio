@@ -19,7 +19,7 @@ function Copyright({ classStyles }) {
       </h6>
       <div class="copyright-container">
         <p class="copyright-text">
-          &copy; {currentYear} Ahmed Tharwat. All Rights Reserved.
+          &copy; {currentYear} Ahmed Khalil. All Rights Reserved.
         </p>
       </div>
     </footer>

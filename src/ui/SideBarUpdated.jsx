@@ -186,7 +186,7 @@ function SideBarUpdated() {
         <div className="z-30">
           <LogoUpdated dark={isDarkMode} />
 
-          <TextWriter arrayOfTexts={["Ahmed Khalil", "Full-Stack Engineer"]} />
+          <TextWriter arrayOfTexts={["Java Engineer", "Full-Stack Engineer"]} />
 
           <NavBar />
         </div>

@@ -10,7 +10,10 @@ function Home() {
         <div className="flex flex-col p-5 mr-10 md:ml-20 justify-center w-full md:max-w-1/2">
           <FadeLeftToRight delay={0.4}>
             <h1 className="text-gray-900 text-3xl sm:text-4xl md:text-6xl font-extrabold dark:text-amber-100">
-              <TextWriter className="home-text" arrayOfTexts={["Full-Stack"]} />
+              <TextWriter
+                className="home-text"
+                arrayOfTexts={["Full-Stack", "Java"]}
+              />
               <hr className="mt-5 w-0" />
               Engineer
             </h1>
